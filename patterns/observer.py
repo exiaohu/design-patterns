@@ -1,14 +1,14 @@
-from abc import ABCMeta, abstractmethod
+from abc import abstractmethod
 from typing import Set
 
 
-class Observer(metaclass=ABCMeta):
+class Observer(object):
     @abstractmethod
     def update(self, temp: float, humidity: float, pressure: float):
         raise NotImplementedError()
 
 
-class Subject(metaclass=ABCMeta):
+class Subject(object):
     @abstractmethod
     def register_observer(self, o: Observer) -> None:
         raise NotImplementedError()
@@ -22,7 +22,7 @@ class Subject(metaclass=ABCMeta):
         raise NotImplementedError()
 
 
-class DisplayElement(metaclass=ABCMeta):
+class DisplayElement(object):
     @abstractmethod
     def display(self):
         raise NotImplementedError()
@@ -117,7 +117,7 @@ class ForecastDisplay(Observer, DisplayElement):
         print("Forecast: ", end='')
         if self.__current_pressure > self.__last_pressure:
             print("Improving weather on the way!")
-        elif self.__last_pressure == self.__last_pressure:
+        elif self.__current_pressure == self.__last_pressure:
             print("More of the same")
         elif self.__current_pressure < self.__last_pressure:
             print("Watch out for cooler, rainy weather")

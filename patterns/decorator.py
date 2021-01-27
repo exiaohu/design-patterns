@@ -1,4 +1,4 @@
-from abc import ABCMeta
+from abc import abstractmethod
 
 
 class Beverage:
@@ -12,7 +12,8 @@ class Beverage:
         raise NotImplementedError()
 
 
-class CondimentDecorator(Beverage, metaclass=ABCMeta):
+class CondimentDecorator(Beverage):
+    @abstractmethod
     def get_description(self):
         raise NotImplementedError()
 
