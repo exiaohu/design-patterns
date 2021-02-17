@@ -1,19 +1,23 @@
-from abc import abstractmethod
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+
+"""
 
 
 class Beverage:
     def __init__(self, description=None):
-        self.__description = description or 'Unknown Beverage'
+        self.description = description or 'Unknown Beverage'
 
     def get_description(self):
-        return self.__description
+        return self.description
 
     def cost(self) -> float:
         raise NotImplementedError()
 
 
 class CondimentDecorator(Beverage):
-    @abstractmethod
     def get_description(self):
         raise NotImplementedError()
 
@@ -53,37 +57,37 @@ class Decaf(Beverage):
 class Mocha(CondimentDecorator):
     def __init__(self, beverage: Beverage):
         super().__init__()
-        self.__beverage = beverage
+        self.beverage = beverage
 
     def get_description(self):
-        return self.__beverage.get_description() + ', Mocha'
+        return self.beverage.get_description() + ', Mocha'
 
     def cost(self):
-        return .20 + self.__beverage.cost()
+        return .20 + self.beverage.cost()
 
 
 class Soy(CondimentDecorator):
     def __init__(self, beverage: Beverage):
         super().__init__()
-        self.__beverage = beverage
+        self.beverage = beverage
 
     def get_description(self):
-        return self.__beverage.get_description() + ', Soy'
+        return self.beverage.get_description() + ', Soy'
 
     def cost(self):
-        return .34 + self.__beverage.cost()
+        return .34 + self.beverage.cost()
 
 
 class Whip(CondimentDecorator):
     def __init__(self, beverage: Beverage):
         super().__init__()
-        self.__beverage = beverage
+        self.beverage = beverage
 
     def get_description(self):
-        return self.__beverage.get_description() + ', Whip'
+        return self.beverage.get_description() + ', Whip'
 
     def cost(self):
-        return .14 + self.__beverage.cost()
+        return .14 + self.beverage.cost()
 
 
 def test():

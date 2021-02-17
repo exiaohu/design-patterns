@@ -1,31 +1,34 @@
-from abc import abstractmethod
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 from typing import List
 
 
 class Pizza(object):
     def __init__(self, name: str = None, dough: str = None, sauce: str = None, toppings: List[str] = None):
-        self.__toppings = toppings or 'Pizza'
-        self.__sauce = sauce or 'Sauce'
-        self.__dough = dough or 'Dough'
-        self.__name = name or []
+        self.toppings = toppings or 'Pizza'
+        self.sauce = sauce or 'Sauce'
+        self.dough = dough or 'Dough'
+        self.name = name or []
 
     def prepare(self):
-        print('Preparing', self.__name)
-        print('Tossing', self.__dough)
-        print('Adding', self.__sauce)
-        print('Adding toppings:', *self.__toppings)
+        print('Preparing', self.name)
+        print('Tossing', self.dough)
+        print('Adding', self.sauce)
+        print('Adding toppings:', *self.toppings)
 
     def bake(self):
-        print(f'Bake {self.__name} for 25 minutes at 350')
+        print(f'Bake {self.name} for 25 minutes at 350')
 
     def cut(self):
-        print(f'Cutting {self.__name} into diagonal slices')
+        print(f'Cutting {self.name} into diagonal slices')
 
     def box(self):
-        print(f'Place {self.__name} in official PizzaStore box')
+        print(f'Place {self.name} in official PizzaStore box')
 
     def get_name(self):
-        return self.__name
+        return self.name
 
 
 class NYStyleCheesePizza(Pizza):
@@ -77,7 +80,6 @@ class PizzaStore(object):
 
         return pizza
 
-    @abstractmethod
     def create_pizza(self, pizza_type: str):
         raise NotImplementedError()
 
